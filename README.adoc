@@ -1,4 +1,4 @@
-= OpenID Connect user info Policy
+= OpenID Connect user info policy
 
 ifdef::env-github[]
 image:https://ci.gravitee.io/buildStatus/icon?job=gravitee-io/gravitee-policy-openid-connect-userinfo/master["Build status", link="https://ci.gravitee.io/job/gravitee-io/job/gravitee-policy-openid-connect-userinfo/"]
@@ -16,3 +16,5 @@ endif::[]
 ^.^|
 
 |===
+
+== Description
