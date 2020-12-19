@@ -5,7 +5,10 @@
     "oauthResource" : {
       "title": "OpenID Connect resource",
       "description": "OpenID Connect resource used to validate token. (support EL)",
-      "type" : "string"
+      "type" : "string",
+      "x-schema-form": {
+        "expression-language": true
+      }
     },
     "extractPayload" : {
       "title": "Extract UserInfo payload",
