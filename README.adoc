@@ -18,3 +18,7 @@ endif::[]
 |===
 
 == Description
+
+=== Policy identifier
+
+You can enable or disable the policy with policy identifier `policy-openid-userinfo`.
