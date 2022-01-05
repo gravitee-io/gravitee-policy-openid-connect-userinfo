@@ -15,13 +15,13 @@
  */
 package io.gravitee.policy.openid.userinfo;
 
-import io.gravitee.common.http.HttpHeaders;
 import io.gravitee.common.http.HttpStatusCode;
 import io.gravitee.common.http.MediaType;
 import io.gravitee.gateway.api.ExecutionContext;
 import io.gravitee.gateway.api.Request;
 import io.gravitee.gateway.api.Response;
 import io.gravitee.gateway.api.handler.Handler;
+import io.gravitee.gateway.api.http.HttpHeaderNames;
 import io.gravitee.policy.api.PolicyChain;
 import io.gravitee.policy.api.PolicyResult;
 import io.gravitee.policy.api.annotations.OnRequest;
@@ -31,6 +31,7 @@ import io.gravitee.resource.oauth2.api.OAuth2Resource;
 import io.gravitee.resource.oauth2.api.openid.UserInfoResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.StringUtils;
 
 import java.util.Optional;
 
@@ -66,24 +67,19 @@ public class UserInfoPolicy {
             return;
         }
 
-        if (request.headers() == null || request.headers().get(HttpHeaders.AUTHORIZATION) == null || request.headers().get(HttpHeaders.AUTHORIZATION).isEmpty()) {
-            response.headers().add(HttpHeaders.WWW_AUTHENTICATE, BEARER_TYPE+" realm=gravitee.io - No OAuth authorization header was supplied");
+        String authorizationHeader = request.headers().get(HttpHeaderNames.AUTHORIZATION);
+
+        if (request.headers() == null || authorizationHeader == null
+                || authorizationHeader.isEmpty() || !StringUtils.startsWithIgnoreCase(authorizationHeader, BEARER_TYPE)) {
+            response.headers().add(HttpHeaderNames.WWW_AUTHENTICATE, BEARER_TYPE+" realm=gravitee.io - No OAuth authorization header was supplied");
             policyChain.failWith(PolicyResult.failure(HttpStatusCode.UNAUTHORIZED_401,
                     "No OAuth authorization header was supplied"));
             return;
         }
 
-        Optional<String> optionalHeaderAccessToken = request.headers().get(HttpHeaders.AUTHORIZATION).stream().filter(h -> h.startsWith("Bearer")).findFirst();
-        if (!optionalHeaderAccessToken.isPresent()) {
-            response.headers().add(HttpHeaders.WWW_AUTHENTICATE, BEARER_TYPE+" realm=gravitee.io - No OAuth authorization header was supplied");
-            policyChain.failWith(PolicyResult.failure(HttpStatusCode.UNAUTHORIZED_401,
-                    "No OAuth authorization header was supplied"));
-            return;
-        }
-
-        String accessToken = optionalHeaderAccessToken.get().substring(BEARER_TYPE.length()).trim();
+        String accessToken = authorizationHeader.substring(BEARER_TYPE.length()).trim();
         if (accessToken.isEmpty()) {
-            response.headers().add(HttpHeaders.WWW_AUTHENTICATE, BEARER_TYPE+" realm=gravitee.io - No OAuth access token was supplied");
+            response.headers().add(HttpHeaderNames.WWW_AUTHENTICATE, BEARER_TYPE+" realm=gravitee.io - No OAuth access token was supplied");
             policyChain.failWith(PolicyResult.failure(HttpStatusCode.UNAUTHORIZED_401,
                     "No OAuth access token was supplied"));
             return;
@@ -105,7 +101,7 @@ public class UserInfoPolicy {
 
                 policyChain.doNext(request, response);
             } else {
-                response.headers().add(HttpHeaders.WWW_AUTHENTICATE, BEARER_TYPE+" realm=gravitee.io " + userInfoResponse.getPayload());
+                response.headers().add(HttpHeaderNames.WWW_AUTHENTICATE, BEARER_TYPE+" realm=gravitee.io " + userInfoResponse.getPayload());
 
                 if (userInfoResponse.getThrowable() == null) {
                     policyChain.failWith(PolicyResult.failure(HttpStatusCode.UNAUTHORIZED_401,
