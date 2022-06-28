@@ -1,0 +1,69 @@
+{
+  "id": "my-api-no-resource",
+  "name": "my-api-no-resource",
+  "gravitee": "2.0.0",
+  "proxy": {
+    "context_path": "/test-no-resource",
+    "endpoints": [
+      {
+        "name": "default",
+        "target": "http://localhost:8080/endpoint",
+        "http": {
+          "connectTimeout": 3000,
+          "readTimeout": 60000
+        }
+      }
+    ]
+  },
+  "flows": [
+    {
+      "name": "No payload extraction flow",
+      "methods": [
+        "GET"
+      ],
+      "enabled": true,
+      "path-operator": {
+        "path": "/no-payload-extraction",
+        "operator": "STARTS_WITH"
+      },
+      "pre": [
+        {
+          "name": "OpenId Connect - UserInfo",
+          "description": "",
+          "enabled": true,
+          "policy": "policy-openid-userinfo",
+          "configuration": {
+            "oauthResource": "dummy-oauth-resource",
+            "extractPayload": false
+          }
+        }
+      ],
+      "post": []
+    },
+    {
+      "name": "Payload extraction flow",
+      "methods": [
+        "GET"
+      ],
+      "enabled": true,
+      "path-operator": {
+        "path": "/payload-extraction",
+        "operator": "STARTS_WITH"
+      },
+      "pre": [
+        {
+          "name": "OpenId Connect - UserInfo",
+          "description": "",
+          "enabled": true,
+          "policy": "policy-openid-userinfo",
+          "configuration": {
+            "oauthResource": "dummy-oauth-resource",
+            "extractPayload": true
+          }
+        }
+      ],
+      "post": [
+      ]
+    }
+  ]
+}
