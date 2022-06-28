@@ -29,7 +29,6 @@ import io.gravitee.policy.openid.userinfo.configuration.UserInfoPolicyConfigurat
 import io.gravitee.resource.api.ResourceManager;
 import io.gravitee.resource.oauth2.api.OAuth2Resource;
 import io.gravitee.resource.oauth2.api.openid.UserInfoResponse;
-import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
@@ -112,15 +111,27 @@ public class UserInfoPolicy {
 
                 policyChain.doNext(request, response);
             } else {
-                response
-                    .headers()
-                    .add(HttpHeaderNames.WWW_AUTHENTICATE, BEARER_TYPE + " realm=gravitee.io " + userInfoResponse.getPayload());
-
                 if (userInfoResponse.getThrowable() == null) {
+                    response
+                        .headers()
+                        .add(
+                            HttpHeaderNames.WWW_AUTHENTICATE,
+                            String.format("%s realm=gravitee.io - Invalid OAuth access token was supplied", BEARER_TYPE)
+                        );
                     policyChain.failWith(
                         PolicyResult.failure(HttpStatusCode.UNAUTHORIZED_401, userInfoResponse.getPayload(), MediaType.APPLICATION_JSON)
                     );
                 } else {
+                    response
+                        .headers()
+                        .add(
+                            HttpHeaderNames.WWW_AUTHENTICATE,
+                            String.format(
+                                "%s realm=gravitee.io - Error occurs during OAuth access token validation: %s",
+                                BEARER_TYPE,
+                                userInfoResponse.getThrowable().getMessage()
+                            )
+                        );
                     policyChain.failWith(PolicyResult.failure(HttpStatusCode.SERVICE_UNAVAILABLE_503, "Service Unavailable"));
                 }
             }
