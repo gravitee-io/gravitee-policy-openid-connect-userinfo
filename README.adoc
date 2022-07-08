@@ -20,3 +20,17 @@ endif::[]
 |===
 
 == Description
+
+Use the `policy-openid-userinfo` to get the OpenId Connect user info from an OAuth2 resource through its UserInfo endpoint.
+
+NOTE: The request will fail with a 401 status if the policy's Oauth2 resource is misconfigured or not defined at all. To troubleshoot this, check the `WWW_Authenticate` header for more information.
+
+== Configuration
+
+Use the following options to configure the policy:
+
+|===
+|Property |Required |Description |Type |Default
+
+|oauthResource|X|The OAuth2 resource used to get UserInfo|string|
+|extractPayload||When set to  `true`, the payload of the response from the `UserInfo` endpoint is set in the `openid.userinfo.payload` gateway attribute|boolean|
