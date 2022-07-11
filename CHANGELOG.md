@@ -1,3 +1,10 @@
+## [1.5.2](https://github.com/gravitee-io/gravitee-policy-openid-connect-userinfo/compare/1.5.1...1.5.2) (2022-07-11)
+
+
+### Bug Fixes
+
+* add documentation of UserInfo policy ([4b38510](https://github.com/gravitee-io/gravitee-policy-openid-connect-userinfo/commit/4b38510ebc410640ece05e7b7bbf4ff01b0952fe))
+
 ## [1.5.1](https://github.com/gravitee-io/gravitee-policy-openid-connect-userinfo/compare/1.5.0...1.5.1) (2022-07-05)
 
 
