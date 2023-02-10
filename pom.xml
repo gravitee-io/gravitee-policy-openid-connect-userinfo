@@ -44,7 +44,7 @@
         <!-- Property used by the publication job in CI-->
         <publish-folder-path>graviteeio-apim/plugins/policies</publish-folder-path>
         <gravitee-apim-gateway-tests-sdk.version>3.18.0-SNAPSHOT</gravitee-apim-gateway-tests-sdk.version>
-        <gravitee-expression-language.version>1.9.3</gravitee-expression-language.version>
+        <gravitee-expression-language.version>1.11.4</gravitee-expression-language.version>
     </properties>
 
     <dependencyManagement>
