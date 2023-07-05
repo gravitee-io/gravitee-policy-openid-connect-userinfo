@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/gravitee-io/gravitee-policy-openid-connect-userinfo/compare/1.5.2...1.6.0) (2023-07-05)
+
+
+### Features
+
+* define execution phase ([d10df80](https://github.com/gravitee-io/gravitee-policy-openid-connect-userinfo/commit/d10df80a2bb722c6a44f87cbf92ca5dbf0ab1ca6))
+
 ## [1.5.2](https://github.com/gravitee-io/gravitee-policy-openid-connect-userinfo/compare/1.5.1...1.5.2) (2022-07-11)
 
 
