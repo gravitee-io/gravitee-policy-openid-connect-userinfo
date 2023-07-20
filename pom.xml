@@ -22,7 +22,7 @@
 
     <groupId>io.gravitee.policy</groupId>
     <artifactId>gravitee-policy-openid-connect-userinfo</artifactId>
-    <version>1.6.0</version>
+    <version>1.6.1</version>
 
     <name>Gravitee.io APIM - Policy - OpenID Connect - UserInfo</name>
     <description>Get the OpenId Connect user info from an OAuth2 resource through its UserInfo endpoint</description>

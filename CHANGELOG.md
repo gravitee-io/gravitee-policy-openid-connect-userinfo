@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/gravitee-io/gravitee-policy-openid-connect-userinfo/compare/1.6.0...1.6.1) (2023-07-20)
+
+
+### Bug Fixes
+
+* update policy description ([1cf6070](https://github.com/gravitee-io/gravitee-policy-openid-connect-userinfo/commit/1cf6070e734a3b762b6a26dc22b1717c45fd98c5))
+
 # [1.6.0](https://github.com/gravitee-io/gravitee-policy-openid-connect-userinfo/compare/1.5.2...1.6.0) (2023-07-05)
 
 
