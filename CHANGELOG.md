@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/gravitee-io/gravitee-policy-openid-connect-userinfo/compare/1.6.1...1.7.0) (2023-12-19)
+
+
+### Features
+
+* enable policy on REQUEST phase for message APIs ([7e11d25](https://github.com/gravitee-io/gravitee-policy-openid-connect-userinfo/commit/7e11d253be7d403127d06262f8d95da876e5ee3a)), closes [gravitee-io/issues#9430](https://github.com/gravitee-io/issues/issues/9430)
+
 ## [1.6.1](https://github.com/gravitee-io/gravitee-policy-openid-connect-userinfo/compare/1.6.0...1.6.1) (2023-07-20)
 
 
