@@ -8,7 +8,18 @@
       "description": "OpenID Connect resource used to validate token. (support EL)",
       "type" : "string",
       "x-schema-form": {
-        "expression-language": true
+        "event": {
+          "name": "fetch-resources",
+          "regexTypes": "^oauth2"
+        },
+        "placeholder": "oauth-resource-name"
+      },
+      "gioConfig": {
+        "uiType": "resource-type",
+        "uiTypeProps": {
+          "resourceType": "oauth2"
+        },
+        "el": true
       }
     },
     "extractPayload" : {
