@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/gravitee-io/gravitee-policy-openid-connect-userinfo/compare/1.7.0...1.8.0) (2026-09-11)
+
+
+### Features
+
+* **schema:** autocomplete the resource field from configured oauth2 resources ([98295b0](https://github.com/gravitee-io/gravitee-policy-openid-connect-userinfo/commit/98295b08ed8bd05eb3951d3043155e84824d5730))
+
 # [1.7.0](https://github.com/gravitee-io/gravitee-policy-openid-connect-userinfo/compare/1.6.1...1.7.0) (2023-12-19)
 
 
