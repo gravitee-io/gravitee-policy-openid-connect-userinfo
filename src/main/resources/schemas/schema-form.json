@@ -1,35 +1,33 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "type": "object",
-  "additionalProperties": false,
-  "properties" : {
-    "oauthResource" : {
-      "title": "OpenID Connect resource",
-      "description": "OpenID Connect resource used to validate token. (support EL)",
-      "type" : "string",
-      "x-schema-form": {
-        "event": {
-          "name": "fetch-resources",
-          "regexTypes": "^oauth2"
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "oauthResource": {
+            "title": "OpenID Connect resource",
+            "description": "OpenID Connect resource used to validate token. (support EL)",
+            "type": "string",
+            "x-schema-form": {
+                "event": {
+                    "name": "fetch-resources",
+                    "regexTypes": "^oauth2"
+                },
+                "placeholder": "oauth-resource-name"
+            },
+            "gioConfig": {
+                "uiType": "resource-type",
+                "uiTypeProps": {
+                    "resourceType": "oauth2"
+                },
+                "el": true
+            }
         },
-        "placeholder": "oauth-resource-name"
-      },
-      "gioConfig": {
-        "uiType": "resource-type",
-        "uiTypeProps": {
-          "resourceType": "oauth2"
-        },
-        "el": true
-      }
+        "extractPayload": {
+            "title": "Extract UserInfo payload",
+            "description": "Extract UserInfo response and put it into the 'openid.userinfo.payload' context attribute.",
+            "type": "boolean",
+            "default": false
+        }
     },
-    "extractPayload" : {
-      "title": "Extract UserInfo payload",
-      "description": "Extract UserInfo response and put it into the 'openid.userinfo.payload' context attribute.",
-      "type" : "boolean",
-      "default": false
-    }
-  },
-  "required": [
-    "oauthResource"
-  ]
+    "required": ["oauthResource"]
 }
