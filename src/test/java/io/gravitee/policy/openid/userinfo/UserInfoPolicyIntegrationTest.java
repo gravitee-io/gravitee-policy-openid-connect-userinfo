@@ -108,8 +108,9 @@ class UserInfoPolicyIntegrationTest extends AbstractPolicyTest<UserInfoPolicy, U
             .assertValue(response -> {
                 assertThat(response.statusCode()).isEqualTo(401);
                 assertThat(response.bodyAsString()).isEqualTo("No OAuth authorization header was supplied");
-                assertThat(response.headers().get(HttpHeaderNames.WWW_AUTHENTICATE))
-                    .isEqualTo("Bearer realm=gravitee.io - No OAuth authorization header was supplied");
+                assertThat(response.headers().get(HttpHeaderNames.WWW_AUTHENTICATE)).isEqualTo(
+                    "Bearer realm=gravitee.io - No OAuth authorization header was supplied"
+                );
                 return true;
             });
 
@@ -132,8 +133,9 @@ class UserInfoPolicyIntegrationTest extends AbstractPolicyTest<UserInfoPolicy, U
             .assertValue(response -> {
                 assertThat(response.statusCode()).isEqualTo(401);
                 assertThat(response.bodyAsString()).isEqualTo("No OAuth access token was supplied");
-                assertThat(response.headers().get(HttpHeaderNames.WWW_AUTHENTICATE))
-                    .isEqualTo("Bearer realm=gravitee.io - No OAuth access token was supplied");
+                assertThat(response.headers().get(HttpHeaderNames.WWW_AUTHENTICATE)).isEqualTo(
+                    "Bearer realm=gravitee.io - No OAuth access token was supplied"
+                );
                 return true;
             });
 
@@ -155,8 +157,9 @@ class UserInfoPolicyIntegrationTest extends AbstractPolicyTest<UserInfoPolicy, U
             .assertComplete()
             .assertValue(response -> {
                 assertThat(response.statusCode()).isEqualTo(401);
-                assertThat(response.headers().get(HttpHeaderNames.WWW_AUTHENTICATE))
-                    .isEqualTo("Bearer realm=gravitee.io - Invalid OAuth access token was supplied");
+                assertThat(response.headers().get(HttpHeaderNames.WWW_AUTHENTICATE)).isEqualTo(
+                    "Bearer realm=gravitee.io - Invalid OAuth access token was supplied"
+                );
                 assertThat(response.bodyAsString()).contains(DummyOauth2Resource.EXTRACTED_FAIL_PAYLOAD);
                 return true;
             });
@@ -179,11 +182,9 @@ class UserInfoPolicyIntegrationTest extends AbstractPolicyTest<UserInfoPolicy, U
             .assertComplete()
             .assertValue(response -> {
                 assertThat(response.statusCode()).isEqualTo(503);
-                assertThat(response.headers().get(HttpHeaderNames.WWW_AUTHENTICATE))
-                    .isEqualTo(
-                        "Bearer realm=gravitee.io - Error occurs during OAuth access token validation: " +
-                        DummyOauth2Resource.THROWABLE_MESSAGE
-                    );
+                assertThat(response.headers().get(HttpHeaderNames.WWW_AUTHENTICATE)).isEqualTo(
+                    "Bearer realm=gravitee.io - Error occurs during OAuth access token validation: " + DummyOauth2Resource.THROWABLE_MESSAGE
+                );
                 assertThat(response.bodyAsString()).contains("Service Unavailable");
                 return true;
             });
