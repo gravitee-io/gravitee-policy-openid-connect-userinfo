@@ -1,3 +1,16 @@
+# [2.0.0](https://github.com/gravitee-io/gravitee-policy-openid-connect-userinfo/compare/1.8.0...2.0.0) (2026-09-23)
+
+
+* chore(deps)!: move to the gravitee orb 5 and parent 23 ([01a30c3](https://github.com/gravitee-io/gravitee-policy-openid-connect-userinfo/commit/01a30c35e0baea538eefec57c8b6d3d73b401d2d))
+
+
+### BREAKING CHANGES
+
+* the artifact is now compiled for Java 21, up from Java 17, and
+requires a Java 21 runtime or later.
+
+https://gravitee.atlassian.net/browse/BX-403
+
 # [1.8.0](https://github.com/gravitee-io/gravitee-policy-openid-connect-userinfo/compare/1.7.0...1.8.0) (2026-09-16)
 
 
