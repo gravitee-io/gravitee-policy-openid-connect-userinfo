@@ -7,6 +7,17 @@ image:https://img.shields.io/badge/semantic--release-conventional%20commits-e100
 image:https://circleci.com/gh/gravitee-io/gravitee-policy-openid-connect-userinfo.svg?style=svg["CircleCI", link="https://circleci.com/gh/gravitee-io/gravitee-policy-openid-connect-userinfo"]
 endif::[]
 
+== Compatibility matrix
+
+|===
+| Plugin version | APIM             | Java version
+
+| 2.x            | 4.7.x to latest  | 21
+| 1.8.x          | 4.0.x to latest  | 17
+| 1.5.x to 1.7.x | 3.18.x to 3.20.x | 11
+| 1.1.x to 1.4.x | 3.x              | 8
+|===
+
 == Phase
 
 [cols="2*", options="header"]
