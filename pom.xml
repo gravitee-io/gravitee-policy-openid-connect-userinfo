@@ -43,6 +43,7 @@
         <!-- Property used by the publication job in CI-->
         <publish-folder-path>graviteeio-apim/plugins/policies</publish-folder-path>
         <gravitee-apim-gateway-tests-sdk.version>3.18.29</gravitee-apim-gateway-tests-sdk.version>
+        <mockito.version>5.24.0</mockito.version>
         <gravitee-expression-language.version>1.9.3</gravitee-expression-language.version>
     </properties>
 
@@ -55,6 +56,12 @@
                 <version>${gravitee-bom.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.version}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
